@@ -8,9 +8,12 @@ project(arm_cmake_template C CXX)
 add_executable(${PROJECT_NAME})
 add_subdirectory(src)
 
-find_package(pugixml CONFIG REQUIRED)
+find_package(Boost REQUIRED)
+find_package(Threads REQUIRED)
 target_link_libraries(${PROJECT_NAME}
-    pugixml
+PRIVATE
+    Boost::boost
+    Threads::Threads
 )
 
 add_custom_target(TARGET ALL

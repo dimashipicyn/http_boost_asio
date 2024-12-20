@@ -1,9 +1,15 @@
 {
-    "name" : "xprofibus",
-    "version-string" : "1.0.0",
-    "builtin-baseline" : "a1a1cbc975abf909a6c8985a6a2b8fe20bbd9bd6",
-    "dependencies" : [ {
-      "name" : "pugixml",
-      "version>=" : "1.14#0"
-    } ]
-  }
+    "name": "xprofibus",
+    "version-string": "1.0.0",
+    "builtin-baseline": "2dc91c6439568f694052c3fa25859dc78d9ff8e4",
+    "dependencies": [
+        {
+            "name": "boost-asio",
+            "version>=": "1.83.0"
+        },
+        {
+            "name": "boost-beast",
+            "version>=": "1.83.0"
+        }
+    ]
+}

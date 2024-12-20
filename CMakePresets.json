@@ -20,9 +20,7 @@
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/bin",
                 "CPACK_PACKAGE_DIRECTORY": "${sourceDir}/packages",
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_BUILD_WITH_INSTALL_RPATH": "ON",
-                "CMAKE_SYSTEM_NAME": "Linux",
-                "CMAKE_SYSTEM_PROCESSOR": "arm"
+                "CMAKE_BUILD_WITH_INSTALL_RPATH": "ON"
             },
             "environment": {
                 "SOURCE_DIR": "${sourceDir}"
@@ -36,10 +34,11 @@
           }
         },
         {
-            "name": "without-compiler",
-            "inherits": "base",
+            "name": "clang",
+            "hidden": true,
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang"
             }
         },
         {
@@ -60,6 +59,8 @@
             "name": "gcc-arm",
             "hidden": true,
             "cacheVariables": {
+                "CMAKE_SYSTEM_NAME": "Linux",
+                "CMAKE_SYSTEM_PROCESSOR": "arm",
                 "VCPKG_TARGET_TRIPLET": "armhf-linux-gcc",
                 "CMAKE_C_COMPILER": "arm-linux-gnueabihf-gcc",
                 "CMAKE_CXX_COMPILER": "arm-linux-gnueabihf-g++",
@@ -118,6 +119,13 @@
             ]
         },
         {
+            "name": "clang-debug",
+            "inherits": [
+                "base debug",
+                "clang"
+            ]
+        },
+        {
             "name": "clang-arm-debug",
             "inherits": [
                 "base debug",
@@ -130,8 +138,7 @@
                 "base release",
                 "clang-arm"
             ]
-        }
-        ,
+        },
         {
             "name": "clang-arm64-debug",
             "inherits": [
